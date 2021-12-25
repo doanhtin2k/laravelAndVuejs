@@ -1,58 +1,4 @@
 <template>
-       
-  <!-- <section class="container">
-              
-       <h1 style="text-align:center">Chu de</h1>
-              
-      <section class="container alert alert-danger col-md-6" v-if="alert!==''">{{alert}}</section>
-              
-      <section>
-         <router-link :to="{name:'StoreCategory'}" class="btn btn-outline-success" style="margin:5px">Add category</router-link>
-      </section>
-              
-      <table class="table">
-                     
-         <thead> 
-                            
-            <tr>
-                                   
-               <th>ID</th>
-                                   
-               <th>title</th>
-                                   
-               <th>description</th>
-                                   
-               <th>Actions</th>
-                               
-            </tr>
-                        
-         </thead>
-                     
-         <tbody>
-                            
-            <tr v-if="categories.length>0" v-for="cate in categories">
-                                   
-               <td>{{cate.id}}</td>
-                                   
-               <td>
-                  <router-link :to="{name:'ShowCategory',params:{id:cate.id}}">{{cate.title}}</router-link>
-               </td>
-                                   
-               <td>{{cate.description}}</td>
-                                   
-                                   
-               <td>
-                  <router-link :to="{name:'UpdateCategory',params:{id:cate.id}}" class="btn btn-outline-info">Edit</router-link>
-                  <button class="btn btn-outline-danger" @click="deleteCategory(cate.id)">Delete</button>
-               </td>
-                               
-            </tr>
-                        
-         </tbody>
-                 
-      </table>
-          
-   </section> -->
 <div class="content">
         <h1 style="text-align:center">{{chu_de}}</h1>
         <section>
@@ -133,9 +79,9 @@ import Paginate from './Paginate.vue';
                if(confirm('Are you sure?')){
                    this.axios.delete('/api/category/'+id)
                    .then((res)=>{
-                       this.categories = res.data.categories;
-                       this.alert = res.data.alert;
-                       
+                       this.categories = res.data.data;
+                       this.meta = res.data.meta;
+                       this.links = res.data.links;
                     })
                    .catch((error)=>{this.alert=error});
                }

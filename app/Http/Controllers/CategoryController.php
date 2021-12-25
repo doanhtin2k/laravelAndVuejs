@@ -104,6 +104,6 @@ class CategoryController extends Controller
         $cate = Category::findOrFail($id);       
                 $cate->delete();
                 $categories = Category::paginate(4);
-                return response()->json(["categories" => CategoryResource::collection($categories) ,"alert"=> "Deleted Successfully"]);
+                return CategoryResource::collection($categories);
     }
 }
